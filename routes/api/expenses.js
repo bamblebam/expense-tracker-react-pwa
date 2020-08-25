@@ -9,14 +9,20 @@ router.get('/', (req, res) => {
 router.post('/add', (req, res) => {
     const newExpense = new Expenses({
         name: req.body.name,
-        price: req.body.price
+        price: Number(req.body.price)
     })
-    newExpense.save().then(expense => res.json(expense))
+    newExpense.save().then(expense => res.json(expense)).catch(err => res.status(404).json("Error " + err))
 })
 
 router.delete('/delete/:id', (req, res) => {
     Expenses.findById(req.params.id).then(expense => expense.remove().then(() => res.json({ success: true }))).catch(err => res.status(404).json({ success: false }))
 })
 
+router.patch('/update/:id', (req, res) => {
+    Expenses.findById(req.params.id).then(expense => {
+        expense.price = Number(req.body.price)
+        expense.save().then(() => res.json("Updated successfully")).catch(err => res.status(404).json("Error " + err))
+    }).catch(err => res.status(404).json("Error " + err))
+})
 
 module.exports = router
