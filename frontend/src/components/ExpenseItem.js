@@ -30,7 +30,19 @@ export default class ExpenseItem extends Component {
         return (
             <Container>
                 <AddButton handleClick={this.handleAddClick}></AddButton>
-            </Container>
+                <ListGroup>
+                    <TransitionGroup className="expenses-list">
+                        {items.map(({ id, name, price }) => (
+                            < CSSTransition key={id} classNames='fade' timeout={500} >
+                                <ListGroupItem className='flex-wrap'>
+                                    <p className='mt-3'>{name}</p>
+                                    <p className='mt-3'>{price}</p>
+                                </ListGroupItem>
+                            </CSSTransition>
+                        ))}
+                    </TransitionGroup>
+                </ListGroup>
+            </Container >
         )
     }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
-import uuid from 'uuid'
+import { Button } from 'reactstrap'
 
 export default class AddButton extends Component {
     constructor(props) {
