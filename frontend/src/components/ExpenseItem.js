@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import AddButton from './AddButton.js'
 import uuid from 'uuid'
 
 export default class ExpenseItem extends Component {
@@ -14,19 +15,21 @@ export default class ExpenseItem extends Component {
         }
     }
 
+    handleAddClick = () => {
+        const name = prompt('Enter Item')
+        const price = Number(prompt('Enter Price'))
+        if (name && price) {
+            this.setState(state => ({
+                items: [...state.items, { id: uuid(), name, price }]
+            }))
+        }
+    }
+
     render() {
         const { items } = this.state
         return (
             <Container>
-                <Button color="dark" style={{ marginBottom: '2rem', marginTop: '2rem' }} onClick={() => {
-                    const name = prompt('Enter Item')
-                    const price = Number(prompt('Enter Price'))
-                    if (name && price) {
-                        this.setState(state => ({
-                            items: [...this.state.items, { id: uuid(), name, price }]
-                        }))
-                    }
-                }}>Add Item</Button>
+                <AddButton handleClick={this.handleAddClick}></AddButton>
             </Container>
         )
     }
