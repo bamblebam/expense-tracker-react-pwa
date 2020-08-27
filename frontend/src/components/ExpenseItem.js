@@ -25,11 +25,18 @@ export default class ExpenseItem extends Component {
         }
     }
 
+    handleDeleteClick = () => {
+        this.setState(state => ({
+            items: state.items.filter(item => item.id !== id)
+        }))
+    }
+
     render() {
         const { items } = this.state
         return (
             <Container>
                 <AddButton handleClick={this.handleAddClick}></AddButton>
+
                 <ListGroup>
                     <TransitionGroup className="expenses-list">
                         {items.map(({ id, name, price }) => (
@@ -42,6 +49,8 @@ export default class ExpenseItem extends Component {
                         ))}
                     </TransitionGroup>
                 </ListGroup>
+
+                <Button className='delete-btn' color='danger' size='sm' onclick={() => this.props.handleClick}></Button>
             </Container >
         )
     }
