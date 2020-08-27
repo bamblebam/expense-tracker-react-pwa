@@ -8,7 +8,7 @@ export default class ExpenseItem extends Component {
         super(props)
 
         this.state = {
-            items=[
+            items: [
                 { id: uuid(), name: 'Milk', price: 45 }
             ]
         }
@@ -18,11 +18,13 @@ export default class ExpenseItem extends Component {
         const { items } = this.state
         return (
             <Container>
-                <Button color='dark' style={{ marginBottom: '2rem' }} onClick={() => {
+                <Button color="dark" style={{ marginBottom: '2rem', marginTop: '2rem' }} onClick={() => {
                     const name = prompt('Enter Item')
                     const price = Number(prompt('Enter Price'))
                     if (name && price) {
-                        items: [...this.state.items, { id: uuid(), name, price }]
+                        this.setState(state => ({
+                            items: [...this.state.items, { id: uuid(), name, price }]
+                        }))
                     }
                 }}>Add Item</Button>
             </Container>
