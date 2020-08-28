@@ -43,9 +43,13 @@ export default class ExpenseItem extends Component {
                         {items.map(({ id, name, price }) => (
                             < CSSTransition key={id} classNames='fade' timeout={500} >
                                 <ListGroupItem className='flex-wrap'>
-                                    <DeleteButton handleClick={this.handleDeleteClick} id={id}></DeleteButton>
-                                    <p className='mt-3'>{name}</p>
-                                    <p className='mt-3'>{price}</p>
+                                    <div className="left">
+                                        <DeleteButton handleClick={this.handleDeleteClick} id={id}></DeleteButton>
+                                        <p className='mt-3'>{name}</p>
+                                    </div>
+                                    <div className="right">
+                                        <p className='mt-3'>{price}</p>
+                                    </div>
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}

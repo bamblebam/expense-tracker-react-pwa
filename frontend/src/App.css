@@ -1,6 +1,9 @@
 
-
 .flex-wrap{
   display: flex;
   justify-content: space-between;
+}
+
+.left,.right{
+  display: flex;
 }
