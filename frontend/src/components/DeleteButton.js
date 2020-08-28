@@ -13,8 +13,8 @@ export default class DeleteButton extends Component {
     render() {
         return (
             <div>
-                <Button className='delete-btn' color='danger' size='sm' onclick={() => this.props.handleClick()}></Button>
-            </div>
+                <Button className='delete-btn' color='danger' size='sm' onClick={() => this.props.handleClick(this.props.id)}>X</Button>
+            </div >
         )
     }
 }

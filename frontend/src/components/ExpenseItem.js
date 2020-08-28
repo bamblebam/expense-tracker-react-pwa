@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import AddButton from './AddButton.js'
+import DeleteButton from './DeleteButton.js'
 import uuid from 'uuid'
 
 export default class ExpenseItem extends Component {
@@ -25,7 +26,7 @@ export default class ExpenseItem extends Component {
         }
     }
 
-    handleDeleteClick = () => {
+    handleDeleteClick = (id) => {
         this.setState(state => ({
             items: state.items.filter(item => item.id !== id)
         }))
@@ -42,6 +43,7 @@ export default class ExpenseItem extends Component {
                         {items.map(({ id, name, price }) => (
                             < CSSTransition key={id} classNames='fade' timeout={500} >
                                 <ListGroupItem className='flex-wrap'>
+                                    <DeleteButton handleClick={this.handleDeleteClick} id={id}></DeleteButton>
                                     <p className='mt-3'>{name}</p>
                                     <p className='mt-3'>{price}</p>
                                 </ListGroupItem>
@@ -50,7 +52,6 @@ export default class ExpenseItem extends Component {
                     </TransitionGroup>
                 </ListGroup>
 
-                <Button className='delete-btn' color='danger' size='sm' onclick={() => this.props.handleClick}></Button>
             </Container >
         )
     }
