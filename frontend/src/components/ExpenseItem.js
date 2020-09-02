@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import uuid from 'uuid'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { getItems } from '../actions/itemActions.js'
 import AddButton from './AddButton.js'
 import DeleteButton from './DeleteButton.js'
-import uuid from 'uuid'
 
-export default class ExpenseItem extends Component {
+class ExpenseItem extends Component {
     constructor(props) {
         super(props)
 
@@ -32,8 +35,12 @@ export default class ExpenseItem extends Component {
         }))
     }
 
+    componentDidMount() {
+        this.props.getItems()
+    }
+
     render() {
-        const { items } = this.state
+        const { items } = this.props.item
         return (
             <Container>
                 <AddButton handleClick={this.handleAddClick}></AddButton>
@@ -60,3 +67,14 @@ export default class ExpenseItem extends Component {
         )
     }
 }
+
+ExpenseItem.propTypes = {
+    getItems: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    item: state.item
+})
+
+export default connect(mapStateToProps, { getItems })(ExpenseItem)
