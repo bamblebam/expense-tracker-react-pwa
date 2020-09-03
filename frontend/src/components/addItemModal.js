@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroup } from 'reactstrap';
 import { connect } from 'react-redux'
 import { addItem } from '../actions/itemActions'
+import uuid from 'uuid'
 
 class AddItemModal extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class AddItemModal extends Component {
         this.state = {
             modal: false,
             name: '',
+            price: ''
         }
     }
 
@@ -25,6 +27,17 @@ class AddItemModal extends Component {
         })
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const newItem = {
+            id: uuid(),
+            name: this.state.name,
+            price: Number(this.state.price)
+        }
+        this.props.addItem(newItem)
+        this.toggle()
+    }
+
     render() {
         return (
             <div>
@@ -34,9 +47,12 @@ class AddItemModal extends Component {
                     <ModalBody>
                         <Form onSubmit={this.handleSubmit}>
                             <FormGroup>
-                                <Label for='expense'>Expense</Label>
                                 <Input type='text' name='name' placeholder='Add Expense' id='expense' onChange={this.handleChange}></Input>
                             </FormGroup>
+                            <FormGroup>
+                                <Input type='text' name='price' placeholder='Add Price' id='price' onChange={this.handleChange}></Input>
+                            </FormGroup>
+                            <Button color='dark' block style={{ marginTop: '2rem' }}>Add Expense</Button>
                         </Form>
                     </ModalBody>
                 </Modal>
@@ -45,4 +61,8 @@ class AddItemModal extends Component {
     }
 }
 
-export default connect()(AddItemModal)
+const mapStateToProps = (state) => ({
+    item: state.item
+})
+
+export default connect(mapStateToProps, { addItem })(AddItemModal)
