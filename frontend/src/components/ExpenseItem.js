@@ -5,9 +5,8 @@ import uuid from 'uuid'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { getItems, deleteItem } from '../actions/itemActions.js'
-import AddButton from './AddButton.js'
 import DeleteButton from './DeleteButton.js'
-import addItemModal from './addItemModal'
+import AddItemModal from './AddItemModal'
 
 class ExpenseItem extends Component {
     constructor(props) {
@@ -42,8 +41,7 @@ class ExpenseItem extends Component {
         const { items } = this.props.item
         return (
             <Container>
-                <AddButton handleClick={this.handleAddClick}></AddButton>
-
+                <AddItemModal></AddItemModal>
                 <ListGroup>
                     <TransitionGroup className="expenses-list">
                         {items.map(({ id, name, price }) => (

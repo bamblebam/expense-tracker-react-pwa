@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form,
 import { connect } from 'react-redux'
 import { addItem } from '../actions/itemActions'
 
-class addItemModal extends Component {
+class AddItemModal extends Component {
     constructor(props) {
         super(props)
 
@@ -45,4 +45,4 @@ class addItemModal extends Component {
     }
 }
 
-export default connect()(addItemModal)
+export default connect()(AddItemModal)
