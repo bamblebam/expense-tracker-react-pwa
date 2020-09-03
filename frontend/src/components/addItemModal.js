@@ -28,7 +28,7 @@ class AddItemModal extends Component {
     render() {
         return (
             <div>
-                <Button color='dark' className='mb-2' onClick={this.toggle}>Add Expense</Button>
+                <Button color='dark' style={{ marginBottom: '2rem', marginTop: '2rem' }} onClick={this.toggle}>Add Expense</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>Add Expense</ModalHeader>
                     <ModalBody>
