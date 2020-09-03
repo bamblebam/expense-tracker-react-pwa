@@ -13,19 +13,6 @@ class ExpenseItem extends Component {
         super(props)
 
         this.state = {
-            items: [
-                { id: uuid(), name: 'Milk', price: 45 }
-            ]
-        }
-    }
-
-    handleAddClick = () => {
-        const name = prompt('Enter Item')
-        const price = Number(prompt('Enter Price'))
-        if (name && price) {
-            this.setState(state => ({
-                items: [...state.items, { id: uuid(), name, price }]
-            }))
         }
     }
 
