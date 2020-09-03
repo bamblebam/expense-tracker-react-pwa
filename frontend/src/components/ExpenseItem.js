@@ -4,9 +4,10 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getItems } from '../actions/itemActions.js'
+import { getItems, deleteItem } from '../actions/itemActions.js'
 import AddButton from './AddButton.js'
 import DeleteButton from './DeleteButton.js'
+import addItemModal from './addItemModal'
 
 class ExpenseItem extends Component {
     constructor(props) {
@@ -30,9 +31,7 @@ class ExpenseItem extends Component {
     }
 
     handleDeleteClick = (id) => {
-        this.setState(state => ({
-            items: state.items.filter(item => item.id !== id)
-        }))
+        this.props.deleteItem(id)
     }
 
     componentDidMount() {
@@ -77,4 +76,4 @@ const mapStateToProps = (state) => ({
     item: state.item
 })
 
-export default connect(mapStateToProps, { getItems })(ExpenseItem)
+export default connect(mapStateToProps, { getItems, deleteItem })(ExpenseItem)
