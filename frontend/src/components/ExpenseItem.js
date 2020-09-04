@@ -31,11 +31,11 @@ class ExpenseItem extends Component {
                 <AddItemModal></AddItemModal>
                 <ListGroup>
                     <TransitionGroup className="expenses-list">
-                        {items.map(({ id, name, price }) => (
-                            < CSSTransition key={id} classNames='fade' timeout={500} >
+                        {items.map(({ _id, name, price }) => (
+                            < CSSTransition key={_id} classNames='fade' timeout={500} >
                                 <ListGroupItem className='flex-wrap'>
                                     <div className="left">
-                                        <DeleteButton handleClick={this.handleDeleteClick} id={id}></DeleteButton>
+                                        <DeleteButton handleClick={this.handleDeleteClick} id={_id}></DeleteButton>
                                         <p className='mt-3'>{name}</p>
                                     </div>
                                     <div className="right">

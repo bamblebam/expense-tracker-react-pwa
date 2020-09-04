@@ -9,11 +9,11 @@ export const getItems = () => dispatch => {
     }))
 }
 
-export const deleteItem = (id) => {
-    return {
+export const deleteItem = (id) => dispatch => {
+    axios.delete(`/api/expenses/delete/${id}`).then(res => dispatch({
         type: DELETE_ITEM,
         payload: id
-    }
+    }))
 }
 
 export const addItem = (item) => dispatch => {
