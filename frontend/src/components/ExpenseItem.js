@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import { getItems, deleteItem } from '../actions/itemActions.js'
 import DeleteButton from './DeleteButton.js'
 import AddItemModal from './AddItemModal'
+import EditItemModal from './EditItemModal'
 
 class ExpenseItem extends Component {
     constructor(props) {
@@ -40,6 +41,7 @@ class ExpenseItem extends Component {
                                     </div>
                                     <div className="right">
                                         <p className='mt-3'>{price}</p>
+                                        <EditItemModal></EditItemModal>
                                     </div>
                                 </ListGroupItem>
                             </CSSTransition>
