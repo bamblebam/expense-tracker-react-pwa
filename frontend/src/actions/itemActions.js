@@ -16,11 +16,11 @@ export const deleteItem = (id) => {
     }
 }
 
-export const addItem = (item) => {
-    return {
+export const addItem = (item) => dispatch => {
+    axios.post('/api/expenses/add', item).then(res => dispatch({
         type: ADD_ITEM,
-        payload: item
-    }
+        payload: res.data
+    }))
 }
 
 export const setItemsLoading = () => {
