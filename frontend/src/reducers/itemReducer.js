@@ -27,7 +27,6 @@ export default function (state = initialState, action) {
         case UPDATE_ITEM:
             return {
                 ...state,
-                items: [action.payload, ...state.items]
             }
         case ITEMS_LOADING:
             return {

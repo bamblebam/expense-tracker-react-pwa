@@ -41,14 +41,13 @@ class ExpenseItem extends Component {
                                     </div>
                                     <div className="right">
                                         <p className='mt-3'>{price}</p>
-                                        <EditItemModal></EditItemModal>
+                                        <EditItemModal id={_id}></EditItemModal>
                                     </div>
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}
                     </TransitionGroup>
                 </ListGroup>
-
             </Container >
         )
     }

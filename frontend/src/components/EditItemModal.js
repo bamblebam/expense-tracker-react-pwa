@@ -27,8 +27,11 @@ class EditItemModal extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const newPrice = Number(this.state.price)
-        this.props.updateItem()
+        const NewPrice = {
+            price: Number(this.state.price)
+        }
+        const id = this.props.id
+        this.props.updateItem(id, NewPrice)
         this.toggle()
     }
 

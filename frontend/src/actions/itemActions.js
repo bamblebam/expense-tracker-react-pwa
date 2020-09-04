@@ -23,8 +23,8 @@ export const addItem = (item) => dispatch => {
     }))
 }
 
-export const updateItem = (id) => dispatch => {
-    axios.patch(`/api/expenses/update/${id}`).then(res => dispatch({
+export const updateItem = (id, item) => dispatch => {
+    axios.patch(`/api/expenses/update/${id}`, item).then(res => dispatch({
         type: UPDATE_ITEM,
         payload: res.data
     }))
