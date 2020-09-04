@@ -21,7 +21,7 @@ router.delete('/delete/:id', (req, res) => {
 router.patch('/update/:id', (req, res) => {
     Expenses.findById(req.params.id).then(expense => {
         expense.price = Number(req.body.price)
-        expense.save().then(() => res.json("Updated successfully")).catch(err => res.status(404).json("Error " + err))
+        expense.save().then(expense => res.json(expense)).catch(err => res.status(404).json("Error " + err))
     }).catch(err => res.status(404).json("Error " + err))
 })
 

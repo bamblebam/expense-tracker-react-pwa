@@ -38,7 +38,7 @@ class EditItemModal extends Component {
     render() {
         return (
             <div>
-                <Button color='dark' style={{ marginBottom: '2rem', marginTop: '2rem' }} onClick={this.toggle}>Update Expense</Button>
+                <Button color='dark' className="mt-2 ml-2" onClick={this.toggle}>Update Expense</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>Update Expense</ModalHeader>
                     <ModalBody>

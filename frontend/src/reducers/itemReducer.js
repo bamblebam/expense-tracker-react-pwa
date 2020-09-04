@@ -27,6 +27,7 @@ export default function (state = initialState, action) {
         case UPDATE_ITEM:
             return {
                 ...state,
+                items: state.items.map(item => item._id == action.payload._id ? action.payload : item)
             }
         case ITEMS_LOADING:
             return {
