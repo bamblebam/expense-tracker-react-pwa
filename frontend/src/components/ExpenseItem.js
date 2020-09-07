@@ -25,8 +25,8 @@ class ExpenseItem extends Component {
     }
 
     render() {
-        const { items } = this.props.item
-        let itemlength = items.length
+        const { items } = this.props.item;
+        console.log(this.props.item)
         return (
             <Container>
                 <AddItemModal></AddItemModal>
@@ -49,7 +49,7 @@ class ExpenseItem extends Component {
                     </TransitionGroup>
                 </ListGroup>
             </Container >
-        )
+        );
     }
 }
 
