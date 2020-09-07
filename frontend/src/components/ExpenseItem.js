@@ -26,6 +26,7 @@ class ExpenseItem extends Component {
 
     render() {
         const { items } = this.props.item
+        let itemlength = items.length
         return (
             <Container>
                 <AddItemModal></AddItemModal>
