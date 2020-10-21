@@ -7,6 +7,7 @@ import { getItems, deleteItem } from '../actions/itemActions.js'
 import DeleteButton from './DeleteButton.js'
 import AddItemModal from './AddItemModal'
 import EditItemModal from './EditItemModal'
+import RegisterModal from './RegisterModal'
 
 class ExpenseItem extends Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class ExpenseItem extends Component {
         return (
             <Container>
                 <AddItemModal></AddItemModal>
+                <RegisterModal></RegisterModal>
                 <ListGroup>
                     <TransitionGroup className="expenses-list">
                         {items.map(({ _id, name, price }) => (
