@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroup } from 'reactstrap';
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { addItem } from '../actions/itemActions'
 
 class AddItemModal extends Component {
@@ -12,6 +13,10 @@ class AddItemModal extends Component {
             name: '',
             price: ''
         }
+    }
+
+    static propTypes = {
+        isAuthenticated: PropTypes.bool
     }
 
     toggle = () => {
@@ -60,7 +65,8 @@ class AddItemModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    item: state.item
+    item: state.item,
+    isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps, { addItem })(AddItemModal)

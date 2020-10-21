@@ -27,7 +27,7 @@ class ExpenseItem extends Component {
 
     render() {
         const items = this.props.item.items
-        return (
+        const list = (
             <Container>
                 <AddItemModal></AddItemModal>
                 <ListGroup>
@@ -50,16 +50,23 @@ class ExpenseItem extends Component {
                 </ListGroup>
             </Container >
         )
+        return (
+            <div>
+                { this.props.isAuthenticated ? list : ''}
+            </div>
+        )
     }
 }
 
 ExpenseItem.propTypes = {
     getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool
 }
 
 const mapStateToProps = (state) => ({
-    item: state.item
+    item: state.item,
+    isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps, { getItems, deleteItem })(ExpenseItem)
