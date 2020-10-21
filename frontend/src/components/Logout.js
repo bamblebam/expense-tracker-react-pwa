@@ -10,7 +10,7 @@ export class Logout extends Component {
     }
     render() {
         return (
-            <Button color='dark' style={{ marginBottom: '2rem', marginTop: '2rem' }} onClick={this.props.logout}>Logout</Button>
+            <NavLink onClick={this.props.logout} href='#'>Logout</NavLink>
         )
     }
 }

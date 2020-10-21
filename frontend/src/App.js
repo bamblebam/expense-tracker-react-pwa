@@ -5,6 +5,7 @@ import ExpenseItem from './components/ExpenseItem.js'
 import { Provider } from 'react-redux'
 import store from './store.js'
 import { loaduser } from './actions/authAction';
+import MyNavbar from './components/MyNavbar'
 
 class App extends Component {
   componentDidMount() {
@@ -14,6 +15,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
+          <MyNavbar></MyNavbar>
           <ExpenseItem></ExpenseItem>
         </div>
       </Provider>

@@ -7,9 +7,7 @@ import { getItems, deleteItem } from '../actions/itemActions.js'
 import DeleteButton from './DeleteButton.js'
 import AddItemModal from './AddItemModal'
 import EditItemModal from './EditItemModal'
-import RegisterModal from './RegisterModal'
-import Logout from './Logout'
-import LoginModal from './LoginModal'
+
 
 class ExpenseItem extends Component {
     constructor(props) {
@@ -32,9 +30,6 @@ class ExpenseItem extends Component {
         return (
             <Container>
                 <AddItemModal></AddItemModal>
-                <RegisterModal></RegisterModal>
-                <Logout></Logout>
-                <LoginModal></LoginModal>
                 <ListGroup>
                     <TransitionGroup className="expenses-list">
                         {items.map(({ _id, name, price }) => (
